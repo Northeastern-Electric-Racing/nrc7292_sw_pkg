@@ -39,6 +39,8 @@
 #include "nrc-stats.h"
 #include "wim.h"
 
+#include "nrc-hif-cspi.h"
+
 static bool once;
 static bool cspi_suspend;
 static atomic_t irq_enabled;

@@ -68,7 +68,7 @@ static void write_file(char *filename, char *data, int len)
 #endif /* if KERNEL_VERSION(5,18,0) < NRC_TARGET_KERNEL_VERSION */
 }
 
-void nrc_dump_init(void)
+static void nrc_dump_init(void)
 {
 }
 

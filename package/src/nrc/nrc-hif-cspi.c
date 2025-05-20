@@ -239,7 +239,7 @@ static u8 compute_crc7(const u8 *data, ssize_t len)
 	return crc >> 1;
 }
 
-void nrc_hif_cspi_read_credit(struct nrc_hif_device *hdev, int q, int *p_front, int *p_rear, int *p_credit)
+static void nrc_hif_cspi_read_credit(struct nrc_hif_device *hdev, int q, int *p_front, int *p_rear, int *p_credit)
 {
 	struct nrc_spi_priv *priv = hdev->priv;
 	*p_front = priv->front[q];
@@ -2027,7 +2027,7 @@ int spi_test(struct nrc_hif_device *hdev)
 	return 0;
 }
 
-void spi_wakeup(struct nrc_hif_device *hdev)
+static void spi_wakeup(struct nrc_hif_device *hdev)
 {
 	struct nrc_spi_priv *priv = hdev->priv;
 	struct spi_device *spi = priv->spi;
@@ -2334,7 +2334,7 @@ static void c_spi_config(struct nrc_spi_priv *priv)
 	c_spi_enable_irq(priv->spi, priv->spi->irq >= 0 ? true : false, CSPI_EIRQ_A_ENABLE);
 }
 
-int nrc_cspi_gpio_alloc(struct spi_device *spi)
+static int nrc_cspi_gpio_alloc(struct spi_device *spi)
 {
 #if defined(SPI_DBG)
 	/* Claim gpio used for debugging */
@@ -2393,7 +2393,7 @@ err:
 	return -EINVAL;
 }
 
-void nrc_cspi_gpio_free(struct spi_device *spi)
+static void nrc_cspi_gpio_free(struct spi_device *spi)
 {
 
 #if defined(SPI_DBG)

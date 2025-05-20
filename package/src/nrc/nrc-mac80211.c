@@ -965,7 +965,7 @@ static int nrc_mac_start(struct ieee80211_hw *hw)
 	return 0;
 }
 
-void nrc_mac_stop(struct ieee80211_hw *hw)
+void nrc_mac_stop(struct ieee80211_hw *hw, bool suspend)
 {
 	struct nrc *nw = hw->priv;
 	int ret = 0;
@@ -3254,7 +3254,7 @@ static int nrc_pre_channel_switch(struct ieee80211_hw *hw,struct ieee80211_vif *
 	return 0;
 }
 
-static int nrc_post_channel_switch(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+static int nrc_post_channel_switch(struct ieee80211_hw *hw, struct ieee80211_vif *vif, struct ieee80211_bss_conf *link_conf)
 {
 	nrc_dbg(NRC_DBG_STATE, "[%s, %d] Channel switch complete\n", __func__, __LINE__);
 	return 0;

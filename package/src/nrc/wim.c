@@ -133,7 +133,7 @@ void nrc_wim_set_ndp_preq(struct nrc *nw, struct sk_buff *skb, u8 enable)
 	nrc_wim_skb_add_tlv(skb, WIM_TLV_NDP_PREQ, sizeof(u8), &enable);
 }
 
-void nrc_wim_set_rc_mode (struct nrc *nw, struct sk_buff *skb, u8 mode)
+static void nrc_wim_set_rc_mode (struct nrc *nw, struct sk_buff *skb, u8 mode)
 {
 	nrc_wim_skb_add_tlv(skb, WIM_TLV_RC_MODE, sizeof(u8), &mode);
 }

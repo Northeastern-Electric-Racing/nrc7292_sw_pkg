@@ -344,37 +344,37 @@ static void nrc_hif_ps_work(struct work_struct *work)
 * Parameters : skb(socket buffer)
 * Returns : T/F (bool) T:TCP ACK, F:not TCP ACK
 *******************************************************************************/
-static bool is_tcp_ack(struct sk_buff *skb)
-{
-	struct hif *hif;
-	struct ieee80211_hdr *mhdr;
-	struct iphdr *ip_header = ip_hdr(skb);
-	struct tcphdr *tcp_header = tcp_hdr(skb);
+// static bool is_tcp_ack(struct sk_buff *skb)
+// {
+// 	struct hif *hif;
+// 	struct ieee80211_hdr *mhdr;
+// 	struct iphdr *ip_header = ip_hdr(skb);
+// 	struct tcphdr *tcp_header = tcp_hdr(skb);
 
-	static __u32 raw_seq_num;
+// 	static __u32 raw_seq_num;
 
-	u8 *p;
-	p = (u8*)skb->data;
-	hif = (void*)p;
+// 	u8 *p;
+// 	p = (u8*)skb->data;
+// 	hif = (void*)p;
 
-	if (hif->type != HIF_TYPE_FRAME)
-		return false;
+// 	if (hif->type != HIF_TYPE_FRAME)
+// 		return false;
 
-	mhdr = (void*)(p + sizeof(struct hif) + sizeof(struct frame_hdr));
+// 	mhdr = (void*)(p + sizeof(struct hif) + sizeof(struct frame_hdr));
 
-	if (ieee80211_is_data(mhdr->frame_control)) {
-		if ((ip_header->protocol == IPPROTO_TCP) &&
-			(tcp_header->syn) && (tcp_header->ack)) {
-			raw_seq_num = ntohl (tcp_header->seq);
-		}
-		if ((ip_header->protocol == IPPROTO_TCP) && (tcp_header->ack) &&
-			((ntohl(tcp_header->seq) - raw_seq_num) == 1)) {
-			return true;
-		}
-	}
+// 	if (ieee80211_is_data(mhdr->frame_control)) {
+// 		if ((ip_header->protocol == IPPROTO_TCP) &&
+// 			(tcp_header->syn) && (tcp_header->ack)) {
+// 			raw_seq_num = ntohl (tcp_header->seq);
+// 		}
+// 		if ((ip_header->protocol == IPPROTO_TCP) && (tcp_header->ack) &&
+// 			((ntohl(tcp_header->seq) - raw_seq_num) == 1)) {
+// 			return true;
+// 		}
+// 	}
 
-	return false;
-}
+// 	return false;
+// }
 
 /*******************************************************************************
 * FunctionName : is_mgmt
@@ -1110,15 +1110,15 @@ int nrc_hif_reset_device(struct nrc_hif_device *dev)
 	return -1;
 }
 
-static int nrc_hif_reset_rx (struct nrc_hif_device *dev)
-{
-	if (dev->hif_ops->reset_rx) {
-		dev->hif_ops->reset_rx(dev);
-		return 0;
-	}
+// static int nrc_hif_reset_rx (struct nrc_hif_device *dev)
+// {
+// 	if (dev->hif_ops->reset_rx) {
+// 		dev->hif_ops->reset_rx(dev);
+// 		return 0;
+// 	}
 
-	return -1;
-}
+// 	return -1;
+// }
 
 int nrc_hif_test_status(struct nrc_hif_device *dev)
 {

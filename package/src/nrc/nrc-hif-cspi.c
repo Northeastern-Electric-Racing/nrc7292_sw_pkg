@@ -239,13 +239,13 @@ static u8 compute_crc7(const u8 *data, ssize_t len)
 	return crc >> 1;
 }
 
-static void nrc_hif_cspi_read_credit(struct nrc_hif_device *hdev, int q, int *p_front, int *p_rear, int *p_credit)
-{
-	struct nrc_spi_priv *priv = hdev->priv;
-	*p_front = priv->front[q];
-	*p_rear = priv->rear[q];
-	*p_credit = priv->credit_max[q];
-}
+// static void nrc_hif_cspi_read_credit(struct nrc_hif_device *hdev, int q, int *p_front, int *p_rear, int *p_credit)
+// {
+// 	struct nrc_spi_priv *priv = hdev->priv;
+// 	*p_front = priv->front[q];
+// 	*p_rear = priv->rear[q];
+// 	*p_credit = priv->credit_max[q];
+// }
 
 
 static void get_sta_cnt(void *data,  struct ieee80211_sta *sta)
